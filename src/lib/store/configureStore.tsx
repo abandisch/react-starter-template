@@ -1,20 +1,21 @@
-import { applyMiddleware, createStore } from 'redux'
+import { init } from '@rematch/core'
 import { createLogger } from 'redux-logger'
 import thunk from 'redux-thunk'
-import reducer from './reducers'
+import models from './models'
 
 const configureStore = () => {
-  const middleware: any[] = [thunk]
+  const middlewares: any[] = [thunk]
 
   if (process.env.NODE_ENV !== 'production') {
-    middleware.push(createLogger())
+    middlewares.push(createLogger())
   }
 
-  return createStore(
-    reducer,
-    // persistedState, // add persistedState before the enhancer, i.e. applyMiddleware
-    applyMiddleware(...middleware)
-  )
+  return init({
+    models,
+    redux: {
+      middlewares
+    }
+  } as any)
 }
 
 export default configureStore
