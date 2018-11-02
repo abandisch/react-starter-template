@@ -20,7 +20,7 @@ function TopBar (props: any) {
     <div className={classes.root}>
       <AppBar color='primary' position='static'>
         <Toolbar>
-          <Typography variant='headline' color='inherit' className={classes.grow}>
+          <Typography variant='h1' color='inherit' className={classes.grow}>
             App Name
           </Typography>
           <Button color='inherit'>Login</Button>

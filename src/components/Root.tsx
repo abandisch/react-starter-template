@@ -10,6 +10,9 @@ const theme = createMuiTheme({
   palette: {
     primary: { main: blue[900] },
     secondary: { main: '#11cb5f' }
+  },
+  typography: {
+    useNextVariants: true
   }
 })
 
