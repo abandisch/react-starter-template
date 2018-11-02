@@ -7,7 +7,8 @@ import * as React from 'react'
 
 const styles = {
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
+    fontSize: '1.5rem'
   },
   root: {
     flexGrow: 1
@@ -20,7 +21,7 @@ function TopBar (props: any) {
     <div className={classes.root}>
       <AppBar color='primary' position='static'>
         <Toolbar>
-          <Typography variant='headline' color='inherit' className={classes.grow}>
+          <Typography variant='h1' color='inherit' className={classes.grow}>
             App Name
           </Typography>
           <Button color='inherit'>Login</Button>
