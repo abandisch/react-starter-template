@@ -7,7 +7,8 @@ import * as React from 'react'
 
 const styles = {
   grow: {
-    flexGrow: 1
+    flexGrow: 1,
+    fontSize: '1.5rem'
   },
   root: {
     flexGrow: 1
