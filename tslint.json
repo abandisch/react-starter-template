@@ -1,5 +1,9 @@
 {
   "extends": ["tslint-react", "tslint-config-prettier", "tslint-config-standard"],
+  "rules": {
+    // override tslint-* rules here
+    "jsx-boolean-value": false
+  },
   "defaultSeverity": "warning",
   "linterOptions": {
     "exclude": [
