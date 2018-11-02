@@ -6,9 +6,11 @@ describe('<App />', () => {
   it('renders without crashing', () => {
     const props = {
       onGetMockData: jest.fn(),
-      apiError: '',
       data: '',
-      isRequestingAPI: false
+      api: {
+        requesting: false,
+        error: ''
+      }
     }
     shallow(<App {...props} />)
   })

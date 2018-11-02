@@ -1,7 +1,6 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
 import { IRootState } from '../../lib/types'
-import * as actions from '../../lib/store/actions'
 import TopBar from '../ui/TopBar'
 
 interface IApp {
@@ -18,7 +17,7 @@ export class App extends React.Component<IAppProps> {
   }
 
   render () {
-    const { isRequestingAPI, data } = this.props
+    const { api, data } = this.props
     return (
       <React.Fragment>
         <header>
@@ -27,24 +26,23 @@ export class App extends React.Component<IAppProps> {
         <p className='App-intro'>
           To get started, edit <code>src/components/App/index.tsx</code> and save to reload.
         </p>
-        <p>Data: {isRequestingAPI ? <span><em>Getting data ...</em></span> : <code>{data}</code>} </p>
+        <p>Data: {api.requesting ? <span><em>Getting data ...</em></span> : <code>{data}</code>} </p>
       </React.Fragment>
     )
   }
 }
 
 const mapStateToProps = (state: IRootState) => {
-  const { apiError, data, isRequestingAPI } = state.mockData
+  const { api, data } = state.mockData
   return {
-    apiError,
-    data,
-    isRequestingAPI
+    api,
+    data
   }
 }
 
 const mapDispatchToProps = (dispatch: any) => {
   return {
-    onGetMockData: () => dispatch(actions.getMockData())
+    onGetMockData: () => dispatch.mockData.getMockData()
   }
 }
 
