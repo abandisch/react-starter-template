@@ -2,9 +2,11 @@ import * as actionTypes from '../store/actions/actionTypes'
 
 export interface IRootState {
   mockData: {
-    apiError: string,
     data: string,
-    isRequestingAPI: boolean
+    api: {
+      requesting: boolean,
+      error: string
+    }
   }
 }
 
