@@ -6,14 +6,30 @@ import {
   NavbarBrand,
   Nav,
   NavItem,
-  NavLink,
-  UncontrolledDropdown,
-  DropdownToggle,
-  DropdownMenu,
-  DropdownItem } from 'reactstrap'
+  NavLink
+} from 'reactstrap'
+import { Link } from 'react-router-dom'
 
-export default class NavBar extends React.Component<{}, { isOpen: boolean }> {
-  constructor (props: Readonly<{}>) {
+interface Props {
+  brand: React.ReactNode
+  links: {
+    label: string
+    to: string
+  }[]
+}
+
+const NavBarLinks = ({ links }: { links: Props['links'] }) => {
+  return (
+    <Nav className='ml-auto' navbar>
+      {
+        links.map((lProp, i) => <NavItem key={i} ><NavLink tag={Link} to={lProp.to}>{lProp.label}</NavLink></NavItem>)
+      }
+    </Nav>
+  )
+}
+
+export default class NavBar extends React.Component<Props, { isOpen: boolean }> {
+  constructor (props: Readonly<Props>) {
     super(props)
 
     this.toggle = this.toggle.bind(this)
@@ -27,37 +43,14 @@ export default class NavBar extends React.Component<{}, { isOpen: boolean }> {
     })
   }
   render () {
+    const { brand, links } = this.props
     return (
       <div>
         <_Navbar color='light' light expand='md'>
-          <NavbarBrand href='/'>App Name</NavbarBrand>
+          <NavbarBrand href='/'>{brand}</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
-            <Nav className='ml-auto' navbar>
-              <NavItem>
-                <NavLink href='/components/'>Components</NavLink>
-              </NavItem>
-              <NavItem>
-                <NavLink href='https://github.com/reactstrap/reactstrap'>GitHub</NavLink>
-              </NavItem>
-              <UncontrolledDropdown nav inNavbar>
-                <DropdownToggle nav caret>
-                  Options
-                </DropdownToggle>
-                <DropdownMenu right>
-                  <DropdownItem>
-                    Option 1
-                  </DropdownItem>
-                  <DropdownItem>
-                    Option 2
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem>
-                    Reset
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
-            </Nav>
+            <NavBarLinks links={links} />
           </Collapse>
         </_Navbar>
       </div>

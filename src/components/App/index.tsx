@@ -24,10 +24,28 @@ export class App extends React.Component<IAppProps> {
 
   render () {
     const { api, data } = this.props
+    const navbarProps = {
+      brand: <span>App Name</span>,
+      links: [
+        {
+          label: 'Home',
+          to: '/'
+        },
+        {
+          label: 'Services',
+          to: '/services'
+        },
+        {
+          label: 'About',
+          to: '/about'
+        }
+      ]
+    }
+
     return (
       <React.Fragment>
         <header>
-          <NavBar />
+          <NavBar {...navbarProps} />
         </header>
         <Container>
           <Row className='mt-5'>
