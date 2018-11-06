@@ -3,7 +3,7 @@ export const startApi = () => ({
   error: ''
 })
 
-export const endApi = (err?: string) => ({
+export const completeApi = (err?: string) => ({
   requesting: false,
   error: err ? err : ''
 })

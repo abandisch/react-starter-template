@@ -3,5 +3,5 @@ import { delay } from './mockFuncs'
 
 export const getMockData = () => {
   return delay(1000)
-    .then(() => ({ data: 'this is the data' }))
+    .then(() => 'this is the data')
 }
