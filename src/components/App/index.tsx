@@ -2,6 +2,7 @@ import * as React from 'react'
 import { connect } from 'react-redux'
 import { IRootState } from '../../lib/types'
 import TopBar from '../ui/TopBar'
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 interface IApp {
   onGetMockData: () => void

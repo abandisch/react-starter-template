@@ -1,34 +1,66 @@
-import AppBar from '@material-ui/core/AppBar'
-import Button from '@material-ui/core/Button'
-import { withStyles } from '@material-ui/core/styles'
-import Toolbar from '@material-ui/core/Toolbar'
-import Typography from '@material-ui/core/Typography'
 import * as React from 'react'
+import {
+  Collapse,
+  Navbar,
+  NavbarToggler,
+  NavbarBrand,
+  Nav,
+  NavItem,
+  NavLink,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem } from 'reactstrap'
 
-const styles = {
-  grow: {
-    flexGrow: 1,
-    fontSize: '1.5rem'
-  },
-  root: {
-    flexGrow: 1
+export default class TopBar extends React.Component<{}, { isOpen: boolean }> {
+  constructor (props: Readonly<{}>) {
+    super(props)
+
+    this.toggle = this.toggle.bind(this)
+    this.state = {
+      isOpen: false
+    }
+  }
+  toggle () {
+    this.setState({
+      isOpen: !this.state.isOpen
+    })
+  }
+  render () {
+    return (
+      <div>
+        <Navbar color='light' light expand='md'>
+          <NavbarBrand href='/'>App Name</NavbarBrand>
+          <NavbarToggler onClick={this.toggle} />
+          <Collapse isOpen={this.state.isOpen} navbar>
+            <Nav className='ml-auto' navbar>
+              <NavItem>
+                <NavLink href='/components/'>Components</NavLink>
+              </NavItem>
+              <NavItem>
+                <NavLink href='https://github.com/reactstrap/reactstrap'>GitHub</NavLink>
+              </NavItem>
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  Options
+                </DropdownToggle>
+                <DropdownMenu right>
+                  <DropdownItem>
+                    Option 1
+                  </DropdownItem>
+                  <DropdownItem>
+                    Option 2
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    Reset
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
+            </Nav>
+          </Collapse>
+        </Navbar>
+      </div>
+    )
   }
 }
-
-function TopBar (props: any) {
-  const { classes } = props
-  return (
-    <div className={classes.root}>
-      <AppBar color='primary' position='static'>
-        <Toolbar>
-          <Typography variant='h1' color='inherit' className={classes.grow}>
-            App Name
-          </Typography>
-          <Button color='inherit'>Login</Button>
-        </Toolbar>
-      </AppBar>
-    </div>
-  )
-}
-
-export default withStyles(styles)(TopBar)
