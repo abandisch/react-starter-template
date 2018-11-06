@@ -1,5 +1,5 @@
 export const startApi = () => ({
-  requesting: false,
+  requesting: true,
   error: ''
 })
 
