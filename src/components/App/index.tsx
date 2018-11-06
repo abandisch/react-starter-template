@@ -1,5 +1,10 @@
 import * as React from 'react'
 import { connect } from 'react-redux'
+import {
+  Container,
+  Row,
+  Col
+} from 'reactstrap'
 import { IRootState } from '../../lib/types'
 import TopBar from '../ui/TopBar'
 import 'bootstrap/dist/css/bootstrap.min.css'
@@ -24,10 +29,18 @@ export class App extends React.Component<IAppProps> {
         <header>
           <TopBar />
         </header>
-        <p className='App-intro'>
-          To get started, edit <code>src/components/App/index.tsx</code> and save to reload.
-        </p>
-        <p>Data: {api.requesting ? <span><em>Getting data ...</em></span> : <code>{data}</code>} </p>
+        <Container>
+          <Row className='mt-5'>
+            <Col>
+              <p>To get started, edit <code>src/components/App/index.tsx</code> and save to reload.</p>
+            </Col>
+          </Row>
+          <Row>
+            <Col>
+              <p>Data: {api.requesting ? <span><em>Getting data ...</em></span> : <code>{data}</code>} </p>
+            </Col>
+          </Row>
+        </Container>
       </React.Fragment>
     )
   }
