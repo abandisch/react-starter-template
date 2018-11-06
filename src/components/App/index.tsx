@@ -6,7 +6,7 @@ import {
   Col
 } from 'reactstrap'
 import { IRootState } from '../../lib/types'
-import TopBar from '../ui/TopBar'
+import NavBar from '../ui/NavBar'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 interface IApp {
@@ -27,7 +27,7 @@ export class App extends React.Component<IAppProps> {
     return (
       <React.Fragment>
         <header>
-          <TopBar />
+          <NavBar />
         </header>
         <Container>
           <Row className='mt-5'>

@@ -1,7 +1,7 @@
 import * as React from 'react'
 import {
   Collapse,
-  Navbar,
+  Navbar as _Navbar,
   NavbarToggler,
   NavbarBrand,
   Nav,
@@ -12,7 +12,7 @@ import {
   DropdownMenu,
   DropdownItem } from 'reactstrap'
 
-export default class TopBar extends React.Component<{}, { isOpen: boolean }> {
+export default class NavBar extends React.Component<{}, { isOpen: boolean }> {
   constructor (props: Readonly<{}>) {
     super(props)
 
@@ -29,7 +29,7 @@ export default class TopBar extends React.Component<{}, { isOpen: boolean }> {
   render () {
     return (
       <div>
-        <Navbar color='light' light expand='md'>
+        <_Navbar color='light' light expand='md'>
           <NavbarBrand href='/'>App Name</NavbarBrand>
           <NavbarToggler onClick={this.toggle} />
           <Collapse isOpen={this.state.isOpen} navbar>
@@ -59,7 +59,7 @@ export default class TopBar extends React.Component<{}, { isOpen: boolean }> {
               </UncontrolledDropdown>
             </Nav>
           </Collapse>
-        </Navbar>
+        </_Navbar>
       </div>
     )
   }
